@@ -119,10 +119,10 @@ def main_section():
      
      col1, mid, col2 = st.columns([1,1,25])
      with col1:
-            st.image('ds-26/main/unicorn.png', width=60)
+            st.image('main/unicorn.png', width=60)
      with col2:
             st.write('Unicorn Team')
-            st.image("ds-26/main/DS.png", caption="Data Science Batch 26", use_column_width=True)
+            st.image("main/DS.png", caption="Data Science Batch 26", use_column_width=True)
 
      st.write(home_temp,unsafe_allow_html=True)
      st.write(home2_temp,unsafe_allow_html=True)
@@ -134,10 +134,10 @@ def main_section():
      col1, col2, col3, col4 = st.columns(4)
 
      team_members = {
-          "Anindya Lokeswara": "ds-26/main/Anin.jpg",
-          "Tatag Suryo Pambudi": "ds-26/main/Tatag.jpg",
-          "Erdiah Ashida Nasirin": "ds-26/main/Erdiah.jpg",
-          "Andi Muhammad Yusuf": "ds-26/main/Andi.jpg"
+          "Anindya Lokeswara": "main/Anin.jpg",
+          "Tatag Suryo Pambudi": "main/Tatag.jpg",
+          "Erdiah Ashida Nasirin": "main/Erdiah.jpg",
+          "Andi Muhammad Yusuf": "main/Andi.jpg"
      }
 
      # Use the columns to align images side by side
