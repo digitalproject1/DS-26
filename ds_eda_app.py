@@ -39,7 +39,7 @@ def load_data(data):
 
 def run_ds_eda_app():
     st.write(temp,unsafe_allow_html=True)
-    df = load_data("/app/ds-26/survey.csv")
+    df = load_data("app/ds-26/survey.csv")
     
     # Data Cleansing for Null Value and Unnecessary Features
     columns_to_drop = ['state', 'comments', 'Timestamp']
