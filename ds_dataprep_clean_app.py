@@ -37,7 +37,7 @@ def load_data(data):
 
 def run_ds_dataprep_clean_app():
     st.write(temp,unsafe_allow_html=True)
-    df = load_data("/Data Privasi/Modul Programming/Python/survey.csv")
+    df = load_data("/survey.csv")
     
     # Data Cleansing for Null Value and Unnecessary Features
     columns_to_drop = ['state', 'comments', 'Timestamp']
