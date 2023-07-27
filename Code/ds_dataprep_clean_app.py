@@ -79,8 +79,8 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
                 )
                 df = df[df[column].isin(user_cat_input)]
             elif is_numeric_dtype(df[column]):
-                _min = float(17)
-                _max = float(99)
+                _min = int(17)
+                _max = int(99)
                 step = (1)
                 user_num_input = right.slider(
                     f"Values for {column}",
