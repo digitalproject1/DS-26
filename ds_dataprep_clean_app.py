@@ -225,3 +225,5 @@ def run_ds_dataprep_clean_app():
 
                  st.dataframe(df_clean_age.groupby(by='Age').agg(Qty=('Age','count')).sort_values(by='Qty',ascending=False))
                  st.text('%s%s' % (df_clean_age['Age'].nunique(),' data'))
+if __name__ == "__main__":
+    run_ds_dataprep_clean_app()
