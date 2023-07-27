@@ -118,7 +118,7 @@ def main_section():
      
      col1, mid, col2 = st.columns([1,1,25])
      with col1:
-            st.image('/Data Privasi/archive/unicorn.png', width=60)
+            st.image('DS-26/unicorn.png', width=60)
      with col2:
             st.write('Unicorn Team')
             st.image("/Data Privasi/Modul Programming/Python/Final Project/image/DS.png", caption="Data Science Batch 26", use_column_width=True)
