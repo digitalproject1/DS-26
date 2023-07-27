@@ -56,7 +56,7 @@ def load_data(data):
     return df  
 
 def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
-    df = load_data("/Data Privasi/Modul Programming/Python/Final Project/Code/survey.csv")
+    df = load_data("Data/survey.csv")
     """
     Adds a UI on top of a dataframe to let viewers filter columns
 
@@ -114,7 +114,7 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 def run_ds_eda_app():
-    df = load_data("/Data Privasi/Modul Programming/Python/Final Project/Code/survey.csv")
+    df = load_data("Data/survey.csv")
     
     # Data Cleansing for Null Value and Unnecessary Features
     columns_to_drop = ['state', 'comments', 'Timestamp']
