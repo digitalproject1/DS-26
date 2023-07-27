@@ -1,5 +1,10 @@
 import streamlit as st
 import pandas as pd
+from pandas.api.types import (
+    is_categorical_dtype,
+    is_numeric_dtype,
+    is_object_dtype,
+)
 
 temp_1 = """
         <style>
