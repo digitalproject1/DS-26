@@ -41,6 +41,63 @@ def load_data(data):
     df = pd.read_csv(data)
     df = df.iloc[:,1:]
     return df  
+def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
+    df = load_data("/Data Privasi/Modul Programming/Python/Final Project/Code/survey.csv")
+    """
+    Adds a UI on top of a dataframe to let viewers filter columns
+
+    Args:
+        df (pd.DataFrame): Original dataframe
+
+    Returns:
+        pd.DataFrame: Filtered dataframe
+    """
+    modify = st.checkbox("Add filters")
+
+    if not modify:
+        return df
+
+    df = df.copy()
+
+    modification_container = st.container()
+
+    with modification_container:
+        to_filter_columns = st.multiselect("Filter dataframe on", df.columns)
+        for column in to_filter_columns:
+            left, right = st.columns((1, 20))
+            # Treat columns with < 10 unique values as categorical
+            if is_categorical_dtype(df[column]) or df[column].nunique() < 10:
+                user_cat_input = right.multiselect(
+                    f"Values for {column}",
+                    df[column].unique(),
+                    default=list(df[column].unique()),
+                )
+                df = df[df[column].isin(user_cat_input)]
+            elif is_numeric_dtype(df[column]):
+                _min = float(df[column].min())
+                _max = float(df[column].max())
+                step = (_max - _min) / 100
+                user_num_input = right.slider(
+                    f"Values for {column}",
+                    min_value=_min,
+                    max_value=_max,
+                    value=(_min, _max),
+                    step=step,
+                )
+                df = df[df[column].between(*user_num_input)]
+            
+                if len(user_date_input) == 2:
+                    user_date_input = tuple(map(pd.to_datetime, user_date_input))
+                    start_date, end_date = user_date_input
+                    df = df.loc[df[column].between(start_date, end_date)]
+            else:
+                user_text_input = right.text_input(
+                    f"Substring or regex in {column}",
+                )
+                if user_text_input:
+                    df = df[df[column].astype(str).str.contains(user_text_input)]
+
+    return df
 
 def run_ds_dataprep_clean_app():
     df = load_data("/Data Privasi/Modul Programming/Python/Final Project/Code/survey.csv")
@@ -140,7 +197,7 @@ def run_ds_dataprep_clean_app():
 
     elif submenu == "Description":
         st.write(temp_1,unsafe_allow_html=True)
-        st.dataframe(df)
+        st.dataframe(filter_dataframe(df))
         col1,col2=st.columns([2,2])
         with col1:          
             with st.expander("Check Data Null Value Before Cleansing"):
