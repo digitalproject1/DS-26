@@ -1,6 +1,5 @@
 import streamlit as st
 import streamlit.components.v1 as stc
-import base64 
 
 from ds_eda_app import run_ds_eda_app
 from ds_dataprep_clean_app import run_ds_dataprep_clean_app
