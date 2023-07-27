@@ -546,5 +546,6 @@ def run_ds_eda_app():
                                               .agg(NotSelf = ('self_employed', 'count'))\
                                               .sort_values(['NotSelf'], ascending=False)    
                  st.dataframe(Self.merge(NotSelf,left_on='Age',right_on='Age'))
+                
 if __name__ == "__main__":
     run_ds_eda_app()
